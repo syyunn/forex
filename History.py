@@ -31,6 +31,7 @@ for year in years:
 
             request = json.loads(requests.get(query).text)
             count += 1
+
             if 'rates' not in request.keys():
                 continue
 
@@ -45,6 +46,7 @@ for year in years:
             rates.append(item)
 
             print(date, " : ", krw_over_usd)
+
             if date == "2019-07-29":
                 pickle_object(rates, 'KRW_USD.pkl')
 
