@@ -48,7 +48,7 @@ for year in years:
             print(date, " : ", krw_over_usd)
 
             if date == "2019-07-29":
-                pickle_object(rates, 'KRW_USD.pkl')
+                pickle_object(rates, 'KRW_USD_2017.pkl')
 
 if __name__ == "__main__":
     pass

@@ -14,5 +14,5 @@ def load_pickle(pickle_path):
 
 
 if __name__ == "__main__":
-    data = load_pickle("KRW_USD.pkl")
+    data = load_pickle("KRW_USD_2017.pkl")
     print(data)
