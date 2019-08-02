@@ -1,5 +1,7 @@
 import pickle
 
+import matplotlib.pyplot as plt
+
 
 def pickle_object(python_obj, pickle_path):
     with open(pickle_path, 'wb') as f:
@@ -11,6 +13,17 @@ def load_pickle(pickle_path):
     with open(pickle_path, 'rb') as f:
         python_obj = pickle.load(f)
     return python_obj
+
+
+def standard_plot(pd_dataframe):
+    print(pd_dataframe['Date'])
+    plt.figure(figsize=(12, 6), dpi=100)
+    plt.plot(pd_dataframe['Date'],
+             pd_dataframe['KRW/USD'],
+             c='blue')
+    plt.xlabel('Date')
+    plt.grid()
+    plt.show()
 
 
 if __name__ == "__main__":

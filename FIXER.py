@@ -5,14 +5,18 @@ from Accounts import access_key
 from utils import pickle_object
 
 target_currencies = ['USD', 'KRW']
+
 currencies = ''
 for curr in target_currencies:
     currencies += curr + ','
 currencies = currencies[:-1]
 
-years = [year for year in range(2017, 2020)]
+years = [year for year in range(1997, 1998)]
+
+# DO NOT TOUCH ###########################
 months = [month for month in range(1, 13)]
 days = [day for day in range(1, 32)]
+##########################################
 
 rates = []
 count = 0
@@ -33,6 +37,7 @@ for year in years:
             count += 1
 
             if 'rates' not in request.keys():
+                print("NULL")
                 continue
 
             usd = request['rates']['USD']
@@ -47,8 +52,8 @@ for year in years:
 
             print(date, " : ", krw_over_usd)
 
-            if date == "2019-07-29":
-                pickle_object(rates, 'KRW_USD_2017.pkl')
+            if date == "1997-12-31":
+                pickle_object(rates, 'KRW_USD_1997.pkl')
 
 if __name__ == "__main__":
     pass
