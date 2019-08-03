@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import utils
 
-year = "1998"
-f = open("raw/{}.txt".format(year), "r")
+period = "2019_Q3"
+f = open("raw/{}.txt".format(period), "r")
 lines = f.readlines()
 
 dates =[]
@@ -33,7 +33,7 @@ data = {'Date': dates,
         'KRW/USD': rates}
 
 df = pd.DataFrame(data)
-utils.pickle_object(df, "data/KRW_USD_{}.pkl".format(year))
+utils.pickle_object(df, "data/KRW_USD_{}.pkl".format(period))
 
 # df = utils.load_pickle("data/KRW_USD_1997.pkl")
 utils.standard_plot(df)
