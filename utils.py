@@ -35,11 +35,14 @@ def concat_two_dfs(df_list):
 
 
 def concat_n_dfs(df_list):
-    df_0_1 = df_list[0:2]
-    df_cat = concat_two_dfs(df_0_1)
-    for df_follow in df_list[3:]:
-        df_cat = concat_two_dfs([df_cat, df_follow])
-    return df_cat
+    if len(df_list) == 2:
+        return concat_two_dfs(df_list)
+    else:
+        df_0_1 = df_list[0:2]
+        df_cat = concat_two_dfs(df_0_1)
+        for df_follow in df_list[2:]:
+            df_cat = concat_two_dfs([df_cat, df_follow])
+        return df_cat
 
 
 if __name__ == "__main__":
