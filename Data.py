@@ -48,20 +48,27 @@ def get_technical_indicators(dataset):
 def plot_technical_indicators(dataset,
                               last_days=None):
     ticker = dataset.columns.values[1]
-    plt.figure(figsize=(16, 10), dpi=150)
+    plt.figure(figsize=(30, 10), dpi=150)
     # shape_0 = dataset.shape[0]
     # xmacd_ = shape_0 - last_days
     #
     if last_days:
         dataset = dataset.iloc[-last_days:, :]
+
+    x_ = list(dataset.index)
+    zeros = [0] * len(x_)
+    roots = np.argwhere(np.diff(np.sign(zeros - dataset['ma14_of_grads_ma14']))).flatten()
+
+    roots_indices = dataset.index[roots]
+    roots_dates = dataset['Date'][roots_indices]
     # x_ = range(3, dataset.shape[0])
     # x_ = list(dataset.index)
 
-    # ax = plt.axes()
-    # ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
-    # ax.xaxis.set_major_formatter(mdates.DateFormatter('%y-%m'))
+    ax = plt.axes()
+    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%y-%m'))
 
-# Plot first subplot
+    # Plot first subplot
     plt.subplot(2, 1, 1)
     plt.plot(dataset['Date'], dataset['ma7'], label='MA 7', color='g', linestyle='--')
     plt.plot(dataset['Date'], dataset['ma14'], label='MA 14', color='black', linestyle='--')
@@ -81,6 +88,13 @@ def plot_technical_indicators(dataset,
     plt.plot(dataset['Date'], dataset['grad_lower_band'], label='Grad14 Lower Band', color='c')
     plt.plot(dataset['Date'], dataset['ma14_of_grads_ma14'], label='14MA of Grad14', color='black')
     plt.axhline(y=0, color='r', linestyle='-')
+    dates_ticks = [i.strftime('%y-%m-%d') for i in roots_dates]
+
+    plt.xticks(roots_dates, dates_ticks)
+    for root_date in roots_dates:
+        plt.axvline(x=root_date, linestyle='--', ymax=0.445)
+
+    # plt.plot(dataset['Date'], [0]*len(dataset), markevery=roots_dates, marker='o', color='b')
 
     # plt.title('MACD')
     # plt.plot(dataset['MACD'], label='MACD', linestyle='-.')

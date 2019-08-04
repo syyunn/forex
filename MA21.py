@@ -11,7 +11,7 @@ df = utils.concat_n_dfs([df1, df2, df3, df4])
 df_ti = get_technical_indicators(df)
 
 plot_technical_indicators(df_ti,
-                          last_days=420)
+                          last_days=300)
 
 if __name__ == "__main__":
     pass

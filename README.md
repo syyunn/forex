@@ -12,3 +12,7 @@
     rates = np.array(rates, dtype='float64')
     data = {'Date': dates,
             'KRW/USD': prices}
+
+### Grad Analysis
+
+![png](assets/plot.png)
