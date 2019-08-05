@@ -13,6 +13,6 @@
     data = {'Date': dates,
             'KRW/USD': prices}
 
-### Grad Analysis
+# Gradient Analysis
 
 ![png](assets/plot.png)
