@@ -5,7 +5,7 @@ import pandas as pd
 N = 10  # number of classes in time series
 T = 100  # number of time steps
 
-prediction_length = 24
+prediction_length = 21
 freq = "1H"
 custom_dataset = np.random.normal(size=(N, T))
 start = pd.Timestamp("01-01-2019", freq=freq)  # can be different for each time series

@@ -4,16 +4,18 @@ import numpy as np
 import pandas as pd
 import utils
 
-period = "2019_Q3"
+period = "1998"
 f = open("raw/{}.txt".format(period), "r")
 lines = f.readlines()
 
-dates =[]
+dates = []
 rates = []
 
 for line in lines:
     # date
-    date, rate = line.split(' ')
+    line = line.split(' ')[1]
+    date = line.split('\t')[0]
+    rate = line.split('\t')[1]
     date_components = date.split('/')
     year = date_components[0]
     month = date_components[1]

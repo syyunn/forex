@@ -8,13 +8,13 @@ plt.grid(which='both')
 plt.show()
 
 pass1 = df.index[0]
-pass2 = df.value[df.value[:"2015-04-05 00:00:00"]]
+pass2 = df.value[df.value[:"2015.txt-04-05 00:00:00"]]
 
 # Train
 from gluonts.dataset.common import ListDataset
 training_data = ListDataset(
     [{"start": df.index[0],
-      "target": df.value[:"2015-04-05 00:00:00"]}],
+      "target": df.value[:"2015.txt-04-05 00:00:00"]}],
     freq="5min"
 )
 
@@ -29,7 +29,7 @@ predictor = estimator.train(training_data=training_data)
 
 # Test
 test_data = ListDataset(
-    [{"start": df.index[0], "target": df.value[:"2015-04-15 00:00:00"]}],
+    [{"start": df.index[0], "target": df.value[:"2015.txt-04-15 00:00:00"]}],
     freq = "5min"
 )
 
