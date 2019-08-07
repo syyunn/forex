@@ -10,6 +10,12 @@ for year in years:
     df = utils.load_pickle("../data/KRW_USD_{}.pkl".format(year))
     dfs.append(df)
 
+df_1 = utils.load_pickle("../data/KRW_USD_{}.pkl".format("2019_Q1_Q2"))
+df_2 = utils.load_pickle("../data/KRW_USD_{}.pkl".format("2019_Q3"))
+
+dfs.append(df_1)
+dfs.append(df_2)
+
 df = utils.concat_n_dfs(dfs)
 
 utils.standard_plot(df)
@@ -22,7 +28,7 @@ custom_dataset = np.array(df['KRW/USD'])
 N = 1  # number of classes in time series
 T = len(custom_dataset) # number of time steps
 
-prediction_length = 21
+prediction_length = 100
 freq = "1D"
 
 # CONVERSION TO GLUON PHASE
